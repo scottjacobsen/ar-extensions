@@ -4,7 +4,7 @@ require "rake"
 require "rake/testtask"
 
 DIR      = Pathname.new(File.dirname(__FILE__))
-ADAPTERS = %w(mysql postgresql sqlite sqlite3 oracle)
+ADAPTERS = %w(mysql postgresql sqlite sqlite3 oracle sqlserver)
 
 task :default => ["test:mysql"]
 

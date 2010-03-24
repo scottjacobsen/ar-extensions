@@ -26,3 +26,12 @@ sqlite:
 sqlite3:
   adapter: sqlite3
   dbfile:  test.db
+
+
+sqlserver:
+  adapter: sqlserver
+  mode: odbc
+  dsn: ar_test
+  username: ar_test
+  password: ar_test
+  encoding: utf8
