@@ -253,6 +253,14 @@ class ActiveRecord::Base
     # information on +column_names+, +array_of_attributes_ and
     # +options+.
     def import_without_validations_or_callbacks( column_names, array_of_attributes, options={} )
+
+      unless connection.null_primary_key_allowed?
+        primary_key_index = column_names.find_index {|cn| columns_hash[cn.to_s].primary}
+        if primary_key_index
+          array_of_attributes.each {|attr| attr.delete_at(primary_key_index) if attr[primary_key_index].nil? }
+          column_names.delete_at(primary_key_index)
+        end
+      end
       escaped_column_names = quote_column_names( column_names )
       columns = []
       array_of_attributes.first.each_with_index { |arr,i| columns << columns_hash[ column_names[i] ] }

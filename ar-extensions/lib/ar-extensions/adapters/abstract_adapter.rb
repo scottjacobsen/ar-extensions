@@ -141,6 +141,7 @@ module ActiveRecord # :nodoc:
         [ *value_sets ]
       end     
     
+      def null_primary_key_allowed?; true; end
     end
   end
 end
