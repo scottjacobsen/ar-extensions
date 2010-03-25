@@ -2,3 +2,5 @@
 *.db
 database.yml
 *.swp
+.rake_tasks
+tags
